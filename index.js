@@ -8,8 +8,8 @@ angular.module('todolist',['ngStorage'])
         $scope.type="undo";
         $scope.$storage=$localStorage.$default({
             todolist:{
-                content:[],
-                type:[]
+                content:["你好","欢迎使用","TO DO LIST","此 WEB APP由","AngularJS","强力驱动！！"],
+                type:["undo","undo","undo","undo","undo","undo"]
             }
         });
         $scope.add=function () {
