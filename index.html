@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="todolist">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+    <script src="angularJS.js"></script>
+    <script src="ngStorage.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+<body ng-controller="list" ng-click="loadlist()">
+    <div class="head">
+        <div class="title">
+            <a>
+                TO DO LIST
+            </a>
+        </div>
+        <div class="count">
+
+        </div>
+    </div>
+    <div class="content">
+        <div class="input">
+            <form>
+                <input type="text" value="" ng-model="inc">
+                <button ng-click="add()">
+                    <i class="iconfont">
+                        &#xe60b;
+                    </i>
+                </button>
+            </form>
+        </div>
+        <div class="con-lists">
+            <ul class="con-list">
+                <li class="{{item[1]}}" ng-repeat="item in outs track by $index" ng-click="settype($index)">
+                    <a ng-bind="item[0]"></a>
+                    <div class="del" ng-if="item[1]=='done'">
+                        <button ng-click="del($index,$event)">
+                            <i class="iconfont">
+                                &#xe601;
+                            </i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
