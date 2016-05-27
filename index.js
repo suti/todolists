@@ -14,12 +14,13 @@ angular.module('todolist',['ngStorage'])
         });
         $scope.add=function () {
             var i = new Array();
-            i[0]=$scope.inc;
-            i[1]=$scope.type;
-            // $scope.ins.push(i);
-            $scope.$storage.todolist.content.push(i[0]);
-            $scope.$storage.todolist.type.push(i[1]);
-            loadlist();
+            if($scope.inc!=""){
+                i[0]=$scope.inc;
+                i[1]=$scope.type;
+                $scope.$storage.todolist.content.push(i[0]);
+                $scope.$storage.todolist.type.push(i[1]);
+                loadlist();
+            }
         };
         $scope.settype=function (i) {
             if($scope.outs[i][1]!="undo"){
@@ -29,16 +30,16 @@ angular.module('todolist',['ngStorage'])
                 $scope.outs[i][1]="done";
                 $scope.$storage.todolist.type[i]="done";
             }
-        }
+        };
         $scope.del=function (i,$event) {
             $scope.$storage.todolist.content.splice(i,1);
             $scope.$storage.todolist.type.splice(i,1);
             loadlist();
             $event.stopPropagation();
-        }
+        };
         window.onload=function () {
             loadlist();
-        }
+        };
         $scope.loadlist=function () {
             loadlist();
         };
